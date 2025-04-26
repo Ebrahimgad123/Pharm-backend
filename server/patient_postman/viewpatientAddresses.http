@@ -1,0 +1,9 @@
+### View Patient Addresses
+GET http://localhost:5000/patient/address/680b64d70b9f015933aeab90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNmQ0NWViZGI0NDY4Njk4MmVkMzIiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1NzkzODgsImV4cCI6MTc0NjE4NDE4OH0.7CFiS5Diz5y18mJONhMv0j1kZ4-XDXZuKchfqkJ0IFA
+Content-Type: application/json
+
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNjRkNzBiOWYwMTU5MzNhZWFiOTAiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1NzkwMDQsImV4cCI6MTc0NjE4MzgwNH0.e_WfnIxAW5p3SCo2HQHixeMzBdwfnh87miOzx7ZndeI",
+#   "type": "PATIENT",
+#   "userId": "680b64d70b9f015933aeab90"
+# }

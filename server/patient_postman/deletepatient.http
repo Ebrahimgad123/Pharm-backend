@@ -1,0 +1,17 @@
+### Delete a patient by ID
+DELETE http://localhost:5000/patient/680b6e30c8287f5eefe5e0b9
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBhMTNhZTkwMDQ5NTJjZDdkOTkyMTQiLCJ1c2VyUm9sZSI6IkFETUlOSVNUUkFUT1IiLCJpYXQiOjE3NDU1Nzk2MDAsImV4cCI6MTc0NjE4NDQwMH0.u9bM5gJwkp4lpQihimfszzAyG-zxMu1H_5FMIEs237E
+### Replace {{patientId}} with the ID of the patient you want to delete
+
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBhNWNjZjc4NDQ0ZjU4YThlMmY2NWYiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1Njk3MTcsImV4cCI6MTc0NjE3NDUxN30.1oBdnADTPivwt1RbczkVTBOinTK60Us3-WN67SRiWaU",
+#   "type": "PATIENT",
+#   "userId": "680a5ccf78444f58a8e2f65f"
+# }
+
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNDk5ODZmNDcxNGRiYjE2ODUzZjciLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1NzAyODksImV4cCI6MTc0NjE3NTA4OX0.irs3ZbmGowXvFLMOey2JyxL1jWOx_CX1w8yfGe2TUJk",
+#   "type": "PATIENT",
+#   "userId": "680b49986f4714dbb16853f7"
+# }
+
+

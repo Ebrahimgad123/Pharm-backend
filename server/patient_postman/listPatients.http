@@ -1,0 +1,6 @@
+//list patients
+// adminstrator and pharmacist
+
+GET http://localhost:5000/patient
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBhNWNjZjc4NDQ0ZjU4YThlMmY2NWYiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1Njg3NjAsImV4cCI6MTc0NjE3MzU2MH0.BlWHZOln3ychUNP5Su0wNmHI5L0wqMb_WmdTbz-vQ9M
+

@@ -1,0 +1,15 @@
+### View Patient Info
+GET http://localhost:5000/patient/680b6ff9064cb294fe4d3223/info
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNmZmOTA2NGNiMjk0ZmU0ZDMyMjMiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1ODA3MzgsImV4cCI6MTc0NjE4NTUzOH0.yqk8dcPfcSsvFQoT9gV65HHGqSutRuzJe3UP203N6Pw
+Content-Type: application/json
+
+# Replace {{patientId}} with the ID of the patient you want to view
+# Replace {{your_token}} with a valid Bearer token
+
+
+# {
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNmZmOTA2NGNiMjk0ZmU0ZDMyMjMiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1ODA3MzgsImV4cCI6MTc0NjE4NTUzOH0.yqk8dcPfcSsvFQoT9gV65HHGqSutRuzJe3UP203N6Pw",
+#   "type": "PATIENT",
+#   "userId": "680b6ff9064cb294fe4d3223"
+# }
+

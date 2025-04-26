@@ -1,0 +1,39 @@
+### Register Patient
+POST http://localhost:5000/patient
+Content-Type: application/json
+
+{
+  "username": "hamdy",
+  "email": "hamdy12@gmail.com",
+  "password": "password123",
+  "mobileNumber": "+1234567890",
+  "nationalId": "123456078901234",
+  "dateOfBirth": "1990-01-01",
+  "gender": "male",
+  "emergencyContact": {
+    "name": "safia Abo Khalil",
+    "mobileNumber": "+0987654321",
+    "relation": "wife"
+  },
+  "files": [
+    {
+      "filename": "document1.pdf",
+      "path": "/uploads/document1.pdf"
+    }
+  ],
+  "familyMembers": [
+    {
+      "name": "Alice Doe",
+      "nationalId": "98765432109876",
+      "patientId": "64b7f2e5c2a1d2f8e5a1b2c3",
+      "gender": "female",
+      "relation": "child"
+    }
+  ],
+  "revFamilyMembers": [],
+  "prescriptions": [],
+  "subscribedToPackage": false,
+  "healthRecords": [],
+  "address": ["123 Main St, City, Country"],
+  "wallet": 0
+}

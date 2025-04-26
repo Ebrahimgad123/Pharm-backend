@@ -1,0 +1,13 @@
+### Get All My Pharmacists
+GET http://localhost:5000/patient/getAllMyPharmacists/680a13ae9004952cd7d99214
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBhMTNhZTkwMDQ5NTJjZDdkOTkyMTQiLCJ1c2VyUm9sZSI6IkFETUlOSVNUUkFUT1IiLCJpYXQiOjE3NDU1ODI1NTksImV4cCI6MTc0NjE4NzM1OX0.RxvEzBpQ4pFOrRlxGYbfG13OebXf935TN68D8psePjw
+Content-Type: application/json
+
+
+# {
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBhMTNhZTkwMDQ5NTJjZDdkOTkyMTQiLCJ1c2VyUm9sZSI6IkFETUlOSVNUUkFUT1IiLCJpYXQiOjE3NDU1ODI1NTksImV4cCI6MTc0NjE4NzM1OX0.RxvEzBpQ4pFOrRlxGYbfG13OebXf935TN68D8psePjw",
+#   "type": "ADMINISTRATOR",
+#   "userId": "680a13ae9004952cd7d99214"
+# }
+
+// still under working

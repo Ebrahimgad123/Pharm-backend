@@ -1,0 +1,18 @@
+### Add Address for Patient
+PUT http://localhost:5000/patient/address/680b6ff9064cb294fe4d3223
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNmZmOTA2NGNiMjk0ZmU0ZDMyMjMiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1ODA3MzgsImV4cCI6MTc0NjE4NTUzOH0.yqk8dcPfcSsvFQoT9gV65HHGqSutRuzJe3UP203N6Pw
+
+{
+    "newAddress": "456 Elm Street, City, Country"
+}
+
+
+
+# {
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNmZmOTA2NGNiMjk0ZmU0ZDMyMjMiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1ODA3MzgsImV4cCI6MTc0NjE4NTUzOH0.yqk8dcPfcSsvFQoT9gV65HHGqSutRuzJe3UP203N6Pw",
+#   "type": "PATIENT",
+#   "userId": "680b6ff9064cb294fe4d3223"
+# }
+
+

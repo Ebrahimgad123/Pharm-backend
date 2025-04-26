@@ -1,0 +1,20 @@
+POST http://localhost:5000/pharmacist
+Content-Type: application/json
+
+
+{
+    "username": "pharmacist23",
+    "name": "John Doe",
+    "email": "pharmacist2@example.com",
+    "password": "securepassword",
+    "dateOfBirth": "8-12-2002",
+    "hourlyRate": 50,
+    "affiliation": "Pharmacy Inc.",
+    "education": "Pharmacy Degree",
+    "files": [
+        {
+            "filename": "license.pdf",
+            "path": "/path/to/license.pdf"
+        }
+    ]
+}

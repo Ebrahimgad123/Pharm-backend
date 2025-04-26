@@ -1,0 +1,11 @@
+### Register Administrator
+POST http://localhost:5000/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNjRkNzBiOWYwMTU5MzNhZWFiOTAiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDU1OTY4NDMsImV4cCI6MTc0NjIwMTY0M30.so1vertR_Q7cymoFXQ6sbdqwfip9LU42Qkdk-P4hc3E
+Content-Type: application/json
+
+{
+    "username": "john_doe",
+    "password": "password123",
+    "email": "john.doe@example.com"
+}
+
