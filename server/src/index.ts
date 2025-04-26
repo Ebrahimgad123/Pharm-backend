@@ -9,6 +9,7 @@ import {errorHandling, NotFound} from './middleware/errorHandling'
 import patientRoute from './routes/patientRoute'
 import pharmacistRoute from './routes/Pharmacists'
 import adminRoute from './routes/adminRoute'
+import medicineRoute from './routes/medicineRoute'
 const port = 3000
 dotenv.config()
 connectDB()
@@ -24,6 +25,7 @@ app.use("/auth",authRoute)
 app.use("/patient",patientRoute)
 app.use("/pharmacist",pharmacistRoute)
 app.use("/admin", adminRoute)
+app.use('/medicine',medicineRoute)
 app.use(NotFound)
 app.use(errorHandling)
 const server=app.listen(process.env.PORT, () => console.log(`Watch in ${port}!`))
