@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { getPermission } from "../utils/premissition";
 import { TokenPayload } from "./verifyTokens";
 import type { Resource, Action } from "../utils/premissition";
-
+                                    //medicine         // delete         
 export const checkPermission = (resource: Resource,action: Action,getOwnerId?: (req: Request) => Promise<string> | string 
 ) => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -11,7 +11,7 @@ export const checkPermission = (resource: Resource,action: Action,getOwnerId?: (
        res.status(401).json({ message: "Not authenticated" });
        return
     }
-
+                                    // PATIENT    medicine     // DELETE
     const permission = getPermission(user.userRole, resource, action);
     if (!permission) {
        res.status(403).json({ message: "Access denied" });

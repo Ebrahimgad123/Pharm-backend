@@ -10,15 +10,30 @@ import patientRoute from './routes/patientRoute'
 import pharmacistRoute from './routes/Pharmacists'
 import adminRoute from './routes/adminRoute'
 import medicineRoute from './routes/medicineRoute'
+import cartRoute from './routes/Cart'
+import chatRoute from './routes/chatRoute'
+import rateLimit from 'express-rate-limit'
+import cookieParser from "cookie-parser";
 const port = 3000
 dotenv.config()
 connectDB()
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100, 
+    message: "Too many requests from this IP, please try again later.",
+});
+app.use(cookieParser());
+app.use(limiter);
 app.use(cors())
 app.use(helmet())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use("/uploads", express.static("./uploads"));
 
-
+app.get('/', (req: Request, res: Response) => {
+    res.send('<h2 style="color:blue;text-align:center">Welcome to the pharmacy API</h2>')
+}
+)
 
 
 app.use("/auth",authRoute)
@@ -26,6 +41,8 @@ app.use("/patient",patientRoute)
 app.use("/pharmacist",pharmacistRoute)
 app.use("/admin", adminRoute)
 app.use('/medicine',medicineRoute)
+app.use ("/cart", cartRoute)
+app.use("/chat", chatRoute)
 app.use(NotFound)
 app.use(errorHandling)
 const server=app.listen(process.env.PORT, () => console.log(`Watch in ${port}!`))
