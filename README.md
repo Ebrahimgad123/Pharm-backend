@@ -143,4 +143,6 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE).
+![diagram](https://github.com/user-attachments/assets/f5837930-f818-4f75-927a-4f708c8a10f5)
+
 
