@@ -1,1 +1,33 @@
 
+name: Generate Docs
+
+on:
+  push:
+    branches:
+      - main  # سيعمل هذا عند عمل push إلى الفرع الرئيسي
+  pull_request:
+    branches:
+      - main  # سيعمل على الـ pull request إلى الفرع الرئيسي
+
+jobs:
+  generate_docs:
+    runs-on: ubuntu-latest  # العمل على بيئة Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # يقوم بسحب الكود من الـ repo
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # تأكد من أنك تحدد إصدار Python المناسب
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt  # تأكد من أنك أضفت جميع المكتبات اللازمة في ملف requirements.txt
+      - name: Generate Documentation with MkDocs
+        run: |
+          mkdocs build  # إذا كنت تستخدم MkDocs لتوليد المستندات
+      - name: Deploy Documentation to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3  # لنشر المستندات على GitHub Pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # استخدام GitHub Token للنشر
+          publish_dir: ./site  # المسار حيث يتم توليد المستندات (قد يكون غيره حسب الأدوات التي تستخدمها)
