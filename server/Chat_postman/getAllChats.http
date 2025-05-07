@@ -1,0 +1,5 @@
+### Fetch All Chats for a User
+GET http://localhost:5000/chat/680b6ff9064cb294fe4d3223
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODBiNmZmOTA2NGNiMjk0ZmU0ZDMyMjMiLCJ1c2VyUm9sZSI6IlBBVElFTlQiLCJpYXQiOjE3NDYxOTI2NjAsImV4cCI6MTc0Njc5NzQ2MH0.1UKgI14JYlhp8Kr7e36uOH4vzLejK7kbQjY7M_CiwuU
+Content-Type: application/json
+

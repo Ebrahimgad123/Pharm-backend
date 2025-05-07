@@ -7,56 +7,60 @@ import User from '../models/User';
 //@description     Create or fetch One to One Chat
 //@route           POST /api/chat/
 //@access          Protected
-export const accessChat = asyncHandler(async (req:Request, res:Response): Promise<any> => {
-  const { docId,patId } = req.body;
-  if (!docId) {
-    console.log("UserId param not sent with request");
-    return res.sendStatus(400);
+export const accessChat = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+  const { docId, patId } = req.body;
+
+  if (!docId || !patId) {
+    res.status(400).json({ message: "Both docId and patId are required." });
+    return;
   }
-  console.log("HERE1");
-  let isChat = await Chat.find({
+
+  console.log("🔍 Looking for existing chat...");
+
+  let chat = await Chat.find({
     isGroupChat: false,
     $and: [
-      { users: { $elemMatch: { $eq: patId} } },
+      { users: { $elemMatch: { $eq: patId } } },
       { users: { $elemMatch: { $eq: docId } } },
     ],
   })
     .populate("users", "-password")
     .populate("latestMessage");
 
-  console.log("HERE2");
-  let usersInChat = await User.populate(isChat, {
+    
+  chat = await Chat.populate(chat, {
     path: "latestMessage.sender",
     select: "name pic email",
   });
-  console.log("HERE3");
-  if (usersInChat.length > 0) {
-    res.send(usersInChat[0]);
-  } else {
-    var chatData = {
-      chatName: "sender",
-      isGroupChat: false,
-      users: [patId, docId],
-      latestMessage:null
-    };
-    console.log("HERE4 "+" "+patId+" "+docId);
-    try {
-      console.log("Here5 "+JSON.stringify(chatData));
-      const createdChat = await Chat.create(chatData);
-      console.log("Here6");
-      const FullChat = await Chat.findOne({ _id: createdChat._id }).populate(
-        "users",
-        "-password"
-      );
-      console.log("Here7 "+FullChat);
-      res.status(200).json(FullChat);
-    } catch (error) {
-      console.log(error);
-      res.status(400);
-    }
+
+  if (chat.length > 0) {
+    console.log("✅ Chat found, returning existing chat.");
+    res.status(200).json(chat[0]);
+    return;
+  }
+
+  console.log("📦 No chat found. Creating a new one...");
+
+  const chatData = {
+    chatName: "sender", 
+    isGroupChat: false,
+    users: [patId, docId],
+  };
+
+  try {
+    const createdChat = await Chat.create(chatData);
+
+    const fullChat = await Chat.findOne({ _id: createdChat._id }).populate(
+      "users",
+      "-password"
+    );
+
+    console.log("✅ New chat created successfully.");
+    res.status(200).json(fullChat);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to create chat", error });
   }
 });
-
 //@description     Fetch all chats for a user
 //@route           GET /api/chat/
 //@access          Protected
@@ -81,15 +85,13 @@ export const fetchChats = asyncHandler(async (req:Request, res:Response):Promise
   }
 });
 
-//@description     Create New Group Chat
-//@route           POST /api/chat/group
-//@access          Protected
-export const createGroupChat = asyncHandler(async (req:Request, res:Response):Promise<any> => {
+
+export const createGroupChat = asyncHandler(async (req: Request, res: Response): Promise<any> => {
   if (!req.body.users || !req.body.name) {
-    return res.status(400).send({ message: "Please Fill all the feilds" });
+    return res.status(400).send({ message: "Please fill all the fields" });
   }
 
-  var users = JSON.parse(req.body.users);
+  let users = req.body.users;
 
   if (users.length < 2) {
     return res
@@ -97,14 +99,16 @@ export const createGroupChat = asyncHandler(async (req:Request, res:Response):Pr
       .send("More than 2 users are required to form a group chat");
   }
 
-  users.push(req.user);
+  if (!users.includes(req.user?.userId)) {
+    users.push(req.user?.userId);
+  }
 
   try {
     const groupChat = await Chat.create({
       chatName: req.body.name,
       users: users,
       isGroupChat: true,
-      groupAdmin: req.user,
+      groupAdmin: req.user?.userId,
     });
 
     const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
@@ -113,8 +117,7 @@ export const createGroupChat = asyncHandler(async (req:Request, res:Response):Pr
 
     res.status(200).json(fullGroupChat);
   } catch (error) {
-    res.status(400).send(error);;
-
+    res.status(400).send(error);
   }
 });
 

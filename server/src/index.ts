@@ -14,6 +14,9 @@ import cartRoute from './routes/Cart'
 import chatRoute from './routes/chatRoute'
 import rateLimit from 'express-rate-limit'
 import cookieParser from "cookie-parser";
+import paymentRoute from './routes/PaymentRoute'
+import messageRoute from './routes/messageRoutes'
+import orderRoute from './routes/orderRoute'
 const port = 3000
 dotenv.config()
 connectDB()
@@ -36,16 +39,26 @@ app.get('/', (req: Request, res: Response) => {
 )
 
 
-app.use("/auth",authRoute)
-app.use("/patient",patientRoute)
-app.use("/pharmacist",pharmacistRoute)
-app.use("/admin", adminRoute)
-app.use('/medicine',medicineRoute)
-app.use ("/cart", cartRoute)
-app.use("/chat", chatRoute)
+app.use("/auth",authRoute) //1
+app.use("/patient",patientRoute) //2
+app.use("/pharmacist",pharmacistRoute) //3
+app.use("/admin", adminRoute)   //4
+app.use('/medicine',medicineRoute)  //5
+app.use ("/cart", cartRoute)   //6
+app.use("/chat", chatRoute)  //7
+app.use("/message", messageRoute); //8
+app.use("/orders", orderRoute);  //9
+app.use("/create-checkout-session", paymentRoute); //10
+//
+
+// app.use("/walletPayment", walletPaymentRouter);
+// app.use("/cashOnDelivery", cashOnDeliveryRouter);
+// app.use("/api/user", userRoutes);
+
+//
 app.use(NotFound)
 app.use(errorHandling)
-const server=app.listen(process.env.PORT, () => console.log(`Watch in ${port}!`))
+const server=app.listen(process.env.PORT, () => console.log(`Watch in ${process.env.PORT}!`))
 import { Server } from "socket.io"
 const io = new Server (server, {
     cors: {

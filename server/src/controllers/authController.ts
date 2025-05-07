@@ -5,7 +5,7 @@ import pharmacist from "../models/pharmacist";
 import dotenv from "dotenv";
 import Joi from "joi";
 dotenv.config();
-import sendMailService from "../services/sendEmail.js";
+
 import { generateToken } from "../utils/generateToken";
 import ExceptionClass from "../utils/ExceptionClass";
 import bcrypt from "bcryptjs";
@@ -36,7 +36,7 @@ export const login = async (req: Request, res: Response) => {
         throw new ExceptionClass("Invalid password", "INVALID_PASSWORD", 401);
       }
   
-      if (user.__t === "pharmacist") {
+      if (user.__t === "PHARMACIST") {
         const pharm = await pharmacist.findById(user._id).exec();
         if (pharm?.status !== "accepted") {
           throw new ExceptionClass("Pharmacist not accepted", "PHARMACIST_NOT_ACCEPTED", 403);
